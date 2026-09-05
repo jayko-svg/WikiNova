@@ -1001,11 +1001,62 @@ document.body.classList.add("dark");
 
 function searchArticles(){
 
-const input=
-document.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+function searchArticles(){
+
+    const input = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const container = document.getElementById("articles");
+    const noResults = document.getElementById("noResults");
+
+    // Si no hay búsqueda, mostrar los artículos originales
+    if(input === ""){
+        document.querySelectorAll(".article[data-title]")
+            .forEach(article => {
+                article.style.display = "";
+            });
+
+        noResults.style.display = "none";
+        return;
+    }
+
+    let found = 0;
+
+    document.querySelectorAll(".article[data-title]")
+        .forEach(article => {
+
+            const title = article.dataset.title.toLowerCase();
+
+            const data = Object.values(articlesData).find(
+                item => item.title.toLowerCase() === title
+            );
+
+            let searchableText = title;
+
+            if(data){
+                searchableText += " ";
+                searchableText += data.category.toLowerCase();
+                searchableText += " ";
+                searchableText += data.text
+                    .replace(/<[^>]*>/g, "")
+                    .toLowerCase();
+            }
+
+            if(searchableText.includes(input)){
+                article.style.display = "";
+                found++;
+            }else{
+                article.style.display = "none";
+            }
+
+        });
+
+    noResults.style.display =
+        found === 0 ? "block" : "none";
+}
 
 const articles=
 document.querySelectorAll(".article[data-title]");
