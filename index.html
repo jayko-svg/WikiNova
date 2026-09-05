@@ -2,503 +2,547 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <meta name="theme-color" content="#111827">
-<meta name="description" content="WikiNova — Tu enciclopedia moderna.">
+
+<meta name="description"
+content="WikiNova — Tu enciclopedia moderna.">
 
 <title>WikiNova</title>
 
 <style>
+
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 :root{
-    --bg:#f5f7fb;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
-    --primary:#6366f1;
-    --primary2:#8b5cf6;
-    --border:#e5e7eb;
-    --nav:#ffffffee;
-    --shadow:0 10px 30px rgba(0,0,0,.08);
+--bg:#f5f7fb;
+--card:#ffffff;
+--text:#111827;
+--muted:#6b7280;
+--primary:#6366f1;
+--primary2:#8b5cf6;
+--border:#e5e7eb;
+--nav:#ffffffee;
+--shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 body.dark{
-    --bg:#0b1020;
-    --card:#151b2e;
-    --text:#f8fafc;
-    --muted:#94a3b8;
-    --border:#27324a;
-    --nav:#111827ee;
-    --shadow:0 10px 30px rgba(0,0,0,.25);
+--bg:#0b1020;
+--card:#151b2e;
+--text:#f8fafc;
+--muted:#94a3b8;
+--border:#27324a;
+--nav:#111827ee;
+--shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 body{
-    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    min-height:100vh;
-    padding-bottom:90px;
-    transition:.25s;
+font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+padding-bottom:90px;
+transition:.25s;
 }
 
 button{
-    font:inherit;
-    border:0;
-    cursor:pointer;
+font:inherit;
+border:0;
+cursor:pointer;
+}
+
+button:active{
+transform:scale(.96);
 }
 
 .app{
-    width:100%;
-    max-width:700px;
-    margin:auto;
+width:100%;
+max-width:700px;
+margin:auto;
 }
 
 /* HEADER */
 
 header{
-    padding:24px 18px 12px;
+padding:24px 18px 12px;
 }
 
 .top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
 .logo-icon{
-    width:43px;
-    height:43px;
-    border-radius:14px;
-    background:linear-gradient(135deg,var(--primary),var(--primary2));
-    display:grid;
-    place-items:center;
-    color:white;
-    font-size:22px;
-    font-weight:900;
-    box-shadow:0 8px 20px rgba(99,102,241,.3);
+width:43px;
+height:43px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--primary),var(--primary2));
+display:grid;
+place-items:center;
+color:white;
+font-size:22px;
+font-weight:900;
+box-shadow:0 8px 20px rgba(99,102,241,.3);
 }
 
 .logo h1{
-    font-size:22px;
-    font-weight:800;
+font-size:22px;
+font-weight:800;
 }
 
 .logo span{
-    color:var(--primary);
+color:var(--primary);
 }
 
 .header-buttons{
-    display:flex;
-    gap:8px;
+display:flex;
+gap:8px;
 }
 
 .icon-btn{
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    background:var(--card);
-    color:var(--text);
-    border:1px solid var(--border);
-    display:grid;
-    place-items:center;
-    font-size:19px;
+width:42px;
+height:42px;
+border-radius:13px;
+background:var(--card);
+color:var(--text);
+border:1px solid var(--border);
+display:grid;
+place-items:center;
+font-size:19px;
 }
 
 /* SEARCH */
 
 .search-box{
-    margin:16px 18px;
-    position:relative;
+margin:16px 18px;
+position:relative;
 }
 
 .search-box input{
-    width:100%;
-    padding:16px 18px 16px 48px;
-    border-radius:17px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    outline:none;
-    font-size:15px;
-    box-shadow:var(--shadow);
+width:100%;
+padding:16px 18px 16px 48px;
+border-radius:17px;
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+outline:none;
+font-size:15px;
+box-shadow:var(--shadow);
 }
 
 .search-box input:focus{
-    border-color:var(--primary);
+border-color:var(--primary);
+box-shadow:0 0 0 3px rgba(99,102,241,.12);
 }
 
 .search-icon{
-    position:absolute;
-    left:17px;
-    top:14px;
-    font-size:20px;
+position:absolute;
+left:17px;
+top:14px;
+font-size:20px;
 }
 
 /* CONTENT */
 
 .content{
-    padding:5px 18px;
+padding:5px 18px;
 }
 
+/* HERO */
+
 .hero{
-    padding:24px;
-    border-radius:24px;
-    background:linear-gradient(135deg,#6366f1,#8b5cf6);
-    color:white;
-    box-shadow:0 15px 35px rgba(99,102,241,.25);
-    position:relative;
-    overflow:hidden;
+padding:24px;
+border-radius:24px;
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+color:white;
+box-shadow:0 15px 35px rgba(99,102,241,.25);
+position:relative;
+overflow:hidden;
 }
 
 .hero::after{
-    content:"";
-    position:absolute;
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    background:rgba(255,255,255,.1);
-    right:-40px;
-    top:-50px;
+content:"";
+position:absolute;
+width:150px;
+height:150px;
+border-radius:50%;
+background:rgba(255,255,255,.1);
+right:-40px;
+top:-50px;
 }
 
 .hero h2{
-    font-size:27px;
-    margin-bottom:8px;
+font-size:27px;
+margin-bottom:8px;
+position:relative;
+z-index:1;
 }
 
 .hero p{
-    opacity:.9;
-    line-height:1.5;
+opacity:.9;
+line-height:1.5;
+position:relative;
+z-index:1;
 }
 
 .hero button{
-    margin-top:17px;
-    padding:11px 17px;
-    border-radius:12px;
-    background:white;
-    color:#5b5bd6;
-    font-weight:700;
+margin-top:17px;
+padding:11px 17px;
+border-radius:12px;
+background:white;
+color:#5b5bd6;
+font-weight:700;
+position:relative;
+z-index:1;
 }
 
 /* SECTION */
 
 .section{
-    margin-top:27px;
+margin-top:27px;
 }
 
 .section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:13px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:13px;
 }
 
 .section-title h2{
-    font-size:19px;
+font-size:19px;
 }
 
 .section-title button{
-    background:none;
-    color:var(--primary);
-    font-weight:700;
+background:none;
+color:var(--primary);
+font-weight:700;
 }
 
 /* CATEGORIES */
 
 .categories{
-    display:flex;
-    gap:12px;
-    overflow-x:auto;
-    scrollbar-width:none;
+display:flex;
+gap:12px;
+overflow-x:auto;
+scrollbar-width:none;
 }
 
 .categories::-webkit-scrollbar{
-    display:none;
+display:none;
 }
 
 .category{
-    min-width:115px;
-    padding:16px 13px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:18px;
-    box-shadow:var(--shadow);
+min-width:115px;
+padding:16px 13px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:18px;
+box-shadow:var(--shadow);
+transition:.2s;
+}
+
+.category:active{
+transform:scale(.96);
 }
 
 .category .emoji{
-    font-size:25px;
-    margin-bottom:9px;
+font-size:25px;
+margin-bottom:9px;
 }
 
 .category strong{
-    display:block;
-    font-size:14px;
+display:block;
+font-size:14px;
 }
 
 .category small{
-    color:var(--muted);
+color:var(--muted);
 }
 
 /* ARTICLES */
 
 .articles{
-    display:grid;
-    gap:12px;
+display:grid;
+gap:12px;
 }
 
 .article{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:19px;
-    padding:17px;
-    box-shadow:var(--shadow);
-    transition:.2s;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:19px;
+padding:17px;
+box-shadow:var(--shadow);
+transition:.2s;
+}
+
+.article:hover{
+transform:translateY(-2px);
 }
 
 .article:active{
-    transform:scale(.98);
+transform:scale(.98);
 }
 
 .article-top{
-    display:flex;
-    gap:13px;
+display:flex;
+gap:13px;
 }
 
 .article-icon{
-    width:47px;
-    height:47px;
-    flex-shrink:0;
-    border-radius:14px;
-    background:rgba(99,102,241,.12);
-    display:grid;
-    place-items:center;
-    font-size:22px;
+width:47px;
+height:47px;
+flex-shrink:0;
+border-radius:14px;
+background:rgba(99,102,241,.12);
+display:grid;
+place-items:center;
+font-size:22px;
 }
 
 .article h3{
-    font-size:16px;
-    margin-bottom:5px;
+font-size:16px;
+margin-bottom:5px;
 }
 
 .article p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.45;
+color:var(--muted);
+font-size:13px;
+line-height:1.45;
 }
 
 .article-bottom{
-    display:flex;
-    justify-content:space-between;
-    margin-top:13px;
-    color:var(--muted);
-    font-size:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:13px;
+color:var(--muted);
+font-size:12px;
 }
 
 .save{
-    background:none;
-    color:var(--muted);
+background:none;
+color:var(--muted);
+transition:.2s;
 }
 
 .save.active{
-    color:#f59e0b;
+color:#f59e0b;
 }
 
-/* BOTTOM NAV */
+/* NAV */
 
 .bottom-nav{
-    position:fixed;
-    z-index:20;
-    bottom:0;
-    left:0;
-    right:0;
-    height:73px;
-    background:var(--nav);
-    backdrop-filter:blur(18px);
-    border-top:1px solid var(--border);
-    display:flex;
-    justify-content:center;
+position:fixed;
+z-index:20;
+bottom:0;
+left:0;
+right:0;
+height:73px;
+background:var(--nav);
+backdrop-filter:blur(18px);
+border-top:1px solid var(--border);
+display:flex;
+justify-content:center;
 }
 
 .nav-inner{
-    width:100%;
-    max-width:700px;
-    display:flex;
-    justify-content:space-around;
+width:100%;
+max-width:700px;
+display:flex;
+justify-content:space-around;
 }
 
 .nav-item{
-    flex:1;
-    max-width:130px;
-    background:none;
-    color:var(--muted);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    font-size:11px;
+flex:1;
+max-width:130px;
+background:none;
+color:var(--muted);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:4px;
+font-size:11px;
+transition:.2s;
 }
 
 .nav-item .nav-icon{
-    font-size:21px;
+font-size:21px;
 }
 
 .nav-item.active{
-    color:var(--primary);
-    font-weight:700;
+color:var(--primary);
+font-weight:700;
 }
 
 /* PAGES */
 
 .page{
-    display:none;
-    animation:fade .25s ease;
+display:none;
+animation:fade .25s ease;
 }
 
 .page.active{
-    display:block;
+display:block;
 }
 
 @keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(7px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+from{
+opacity:0;
+transform:translateY(7px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-/* ARTICLE VIEW */
+/* READER */
 
 .reader{
-    padding:20px 18px;
+padding:20px 18px;
 }
 
 .back{
-    background:var(--card);
-    color:var(--text);
-    border:1px solid var(--border);
-    padding:10px 14px;
-    border-radius:12px;
-    margin-bottom:20px;
+background:var(--card);
+color:var(--text);
+border:1px solid var(--border);
+padding:10px 14px;
+border-radius:12px;
+margin-bottom:20px;
 }
 
 .reader h1{
-    font-size:29px;
-    margin-bottom:10px;
+font-size:29px;
+margin-bottom:10px;
 }
 
 .reader .meta{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:25px;
+color:var(--muted);
+font-size:13px;
+margin-bottom:25px;
 }
 
 .reader h2{
-    margin:25px 0 10px;
+margin:25px 0 10px;
 }
 
 .reader p{
-    color:var(--text);
-    opacity:.9;
-    line-height:1.75;
-    margin-bottom:14px;
+color:var(--text);
+opacity:.9;
+line-height:1.75;
+margin-bottom:14px;
 }
 
 .reader ul{
-    margin-left:22px;
-    line-height:1.8;
+margin-left:22px;
+line-height:1.8;
+}
+
+.reader-save{
+margin:0 0 20px 0;
+padding:10px 14px;
+border-radius:12px;
+background:var(--card);
+color:var(--primary);
+border:1px solid var(--border);
+font-weight:700;
 }
 
 /* PROFILE */
 
 .profile{
-    text-align:center;
-    padding:35px 18px;
+text-align:center;
+padding:35px 18px;
 }
 
 .avatar{
-    width:85px;
-    height:85px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--primary),var(--primary2));
-    color:white;
-    display:grid;
-    place-items:center;
-    font-size:35px;
-    margin:auto auto 15px;
+width:85px;
+height:85px;
+border-radius:50%;
+background:linear-gradient(135deg,var(--primary),var(--primary2));
+color:white;
+display:grid;
+place-items:center;
+font-size:35px;
+margin:auto auto 15px;
 }
 
 .profile h2{
-    margin-bottom:5px;
+margin-bottom:5px;
 }
 
 .profile p{
-    color:var(--muted);
+color:var(--muted);
 }
 
 .profile-card{
-    margin-top:25px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:18px;
-    overflow:hidden;
+margin-top:25px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:18px;
+overflow:hidden;
 }
 
 .profile-option{
-    width:100%;
-    padding:17px;
-    background:none;
-    color:var(--text);
-    text-align:left;
-    border-bottom:1px solid var(--border);
+width:100%;
+padding:17px;
+background:none;
+color:var(--text);
+text-align:left;
+border-bottom:1px solid var(--border);
 }
 
 .profile-option:last-child{
-    border-bottom:0;
+border-bottom:0;
 }
 
 /* EMPTY */
 
 .empty{
-    text-align:center;
-    padding:50px 20px;
-    color:var(--muted);
+text-align:center;
+padding:50px 20px;
+color:var(--muted);
 }
 
 .empty-icon{
-    font-size:45px;
-    margin-bottom:12px;
+font-size:45px;
+margin-bottom:12px;
 }
 
 /* DESKTOP */
 
 @media(min-width:701px){
-    body{
-        padding-bottom:20px;
-    }
 
-    .bottom-nav{
-        position:sticky;
-        bottom:auto;
-        margin-top:20px;
-        border:1px solid var(--border);
-        border-radius:20px;
-    }
+body{
+padding-bottom:20px;
 }
+
+.bottom-nav{
+position:sticky;
+bottom:auto;
+margin-top:20px;
+border:1px solid var(--border);
+border-radius:20px;
+}
+
+}
+
 </style>
 </head>
 
@@ -511,180 +555,203 @@ header{
 <div id="homePage" class="page active">
 
 <header>
-    <div class="top">
-        <div class="logo">
-            <div class="logo-icon">W</div>
-            <h1>Wiki<span>Nova</span></h1>
-        </div>
 
-        <div class="header-buttons">
-            <button class="icon-btn" onclick="toggleDark()">🌙</button>
-        </div>
-    </div>
+<div class="top">
+
+<div class="logo">
+
+<div class="logo-icon">
+W
+</div>
+
+<h1>
+Wiki<span>Nova</span>
+</h1>
+
+</div>
+
+<div class="header-buttons">
+
+<button
+class="icon-btn"
+onclick="toggleDark()">
+
+🌙
+
+</button>
+
+</div>
+
+</div>
+
 </header>
 
+
+<!-- BUSCADOR -->
+
 <div class="search-box">
-    <span class="search-icon">🔎</span>
-    <input id="searchInput"
-           type="search"
-           placeholder="Buscar en WikiNova..."
-           oninput="searchArticles()">
+
+<span class="search-icon">
+🔎
+</span>
+
+<input
+id="searchInput"
+type="search"
+placeholder="Buscar en WikiNova..."
+autocomplete="off"
+oninput="searchArticles">
+
 </div>
+
 
 <main class="content">
 
+
 <section class="hero">
-    <h2>Explora el conocimiento 🚀</h2>
-    <p>
-        Descubre artículos, conceptos, historia,
-        ciencia y mucho más en WikiNova.
-    </p>
-    <button onclick="showPage('explorePage')">
-        Explorar ahora
-    </button>
+
+<h2>
+Explora el conocimiento 🚀
+</h2>
+
+<p>
+Descubre artículos, conceptos, historia,
+ciencia y mucho más en WikiNova.
+</p>
+
+<button onclick="goExplore()">
+Explorar ahora
+</button>
+
 </section>
+
 
 <section class="section">
 
 <div class="section-title">
-    <h2>Categorías</h2>
-    <button onclick="showPage('explorePage')">Ver todas</button>
+
+<h2>
+Categorías
+</h2>
+
+<button onclick="goExplore()">
+Ver todas
+</button>
+
 </div>
+
 
 <div class="categories">
 
-<div class="category">
-    <div class="emoji">🔬</div>
-    <strong>Ciencia</strong>
-    <small>Explora</small>
-</div>
+<div class="category"
+onclick="searchCategory('Ciencia')">
 
-<div class="category">
-    <div class="emoji">🌎</div>
-    <strong>Geografía</strong>
-    <small>Explora</small>
-</div>
+<div class="emoji">🔬</div>
 
-<div class="category">
-    <div class="emoji">🏛️</div>
-    <strong>Historia</strong>
-    <small>Explora</small>
-</div>
+<strong>
+Ciencia
+</strong>
 
-<div class="category">
-    <div class="emoji">💻</div>
-    <strong>Tecnología</strong>
-    <small>Explora</small>
-</div>
+<small>
+Explora
+</small>
 
 </div>
+
+
+<div class="category"
+onclick="searchCategory('Geografía')">
+
+<div class="emoji">🌎</div>
+
+<strong>
+Geografía
+</strong>
+
+<small>
+Explora
+</small>
+
+</div>
+
+
+<div class="category"
+onclick="searchCategory('Historia')">
+
+<div class="emoji">🏛️</div>
+
+<strong>
+Historia
+</strong>
+
+<small>
+Explora
+</small>
+
+</div>
+
+
+<div class="category"
+onclick="searchCategory('Tecnología')">
+
+<div class="emoji">💻</div>
+
+<strong>
+Tecnología
+</strong>
+
+<small>
+Explora
+</small>
+
+</div>
+
+</div>
+
 </section>
+
 
 <section class="section">
 
 <div class="section-title">
-    <h2>Artículos destacados</h2>
+
+<h2 id="articlesTitle">
+Artículos destacados
+</h2>
+
 </div>
 
-<div id="articles" class="articles">
 
-<div class="article"
-     data-title="Sistema Solar"
-     onclick="openArticle('solar')">
+<div
+id="articles"
+class="articles">
+</div>
 
-<div class="article-top">
 
-<div class="article-icon">🪐</div>
+<div
+id="noResults"
+class="empty"
+style="display:none;">
 
-<div>
-<h3>Sistema Solar</h3>
+<div class="empty-icon">
+🔎
+</div>
+
+<h3>
+No encontramos nada
+</h3>
+
 <p>
-Conoce los planetas, estrellas y otros
-objetos de nuestro sistema.
+Prueba con otra búsqueda.
 </p>
-</div>
 
-</div>
-
-<div class="article-bottom">
-<span>🌎 Ciencia</span>
-<button class="save"
-        onclick="event.stopPropagation(); saveArticle(this)">
-☆ Guardar
-</button>
-</div>
-
-</div>
-
-
-<div class="article"
-     data-title="Antiguo Egipto"
-     onclick="openArticle('egipto')">
-
-<div class="article-top">
-
-<div class="article-icon">🏺</div>
-
-<div>
-<h3>Antiguo Egipto</h3>
-<p>
-Una de las civilizaciones más fascinantes
-de la historia.
-</p>
-</div>
-
-</div>
-
-<div class="article-bottom">
-<span>🏛️ Historia</span>
-<button class="save"
-        onclick="event.stopPropagation(); saveArticle(this)">
-☆ Guardar
-</button>
-</div>
-
-</div>
-
-
-<div class="article"
-     data-title="Inteligencia Artificial"
-     onclick="openArticle('ia')">
-
-<div class="article-top">
-
-<div class="article-icon">🤖</div>
-
-<div>
-<h3>Inteligencia Artificial</h3>
-<p>
-Tecnología capaz de realizar tareas que
-normalmente requieren inteligencia humana.
-</p>
-</div>
-
-</div>
-
-<div class="article-bottom">
-<span>💻 Tecnología</span>
-<button class="save"
-        onclick="event.stopPropagation(); saveArticle(this)">
-☆ Guardar
-</button>
-</div>
-
-</div>
-
-</div>
-
-<div id="noResults" class="empty" style="display:none">
-    <div class="empty-icon">🔎</div>
-    <h3>No encontramos nada</h3>
-    <p>Prueba con otra búsqueda.</p>
 </div>
 
 </section>
 
+
 </main>
+
 </div>
 
 
@@ -693,67 +760,47 @@ normalmente requieren inteligencia humana.
 <div id="explorePage" class="page">
 
 <header>
-    <div class="top">
-        <div class="logo">
-            <div class="logo-icon">W</div>
-            <h1>Explorar</h1>
-        </div>
-    </div>
+
+<div class="top">
+
+<div class="logo">
+
+<div class="logo-icon">
+W
+</div>
+
+<h1>
+Explorar
+</h1>
+
+</div>
+
+</div>
+
 </header>
+
 
 <div class="content">
 
 <section class="section">
+
 <div class="section-title">
-<h2>Todas las categorías</h2>
-</div>
 
-<div class="articles">
-
-<div class="article">
-<div class="article-top">
-<div class="article-icon">🔬</div>
-<div>
-<h3>Ciencia</h3>
-<p>Física, química, biología y mucho más.</p>
-</div>
-</div>
-</div>
-
-<div class="article">
-<div class="article-top">
-<div class="article-icon">🌎</div>
-<div>
-<h3>Geografía</h3>
-<p>Países, continentes, ciudades y naturaleza.</p>
-</div>
-</div>
-</div>
-
-<div class="article">
-<div class="article-top">
-<div class="article-icon">🏛️</div>
-<div>
-<h3>Historia</h3>
-<p>Civilizaciones y acontecimientos históricos.</p>
-</div>
-</div>
-</div>
-
-<div class="article">
-<div class="article-top">
-<div class="article-icon">💻</div>
-<div>
-<h3>Tecnología</h3>
-<p>Informática, inteligencia artificial y tecnología.</p>
-</div>
-</div>
-</div>
+<h2>
+Todos los artículos
+</h2>
 
 </div>
+
+<div
+id="exploreArticles"
+class="articles">
+</div>
+
 </section>
 
 </div>
+
 </div>
 
 
@@ -762,18 +809,28 @@ normalmente requieren inteligencia humana.
 <div id="savedPage" class="page">
 
 <header>
+
 <div class="top">
+
 <div class="logo">
-<div class="logo-icon">★</div>
-<h1>Guardados</h1>
+
+<div class="logo-icon">
+★
 </div>
+
+<h1>
+Guardados
+</h1>
+
 </div>
+
+</div>
+
 </header>
 
-<div class="empty">
-<div class="empty-icon">🔖</div>
-<h3>Tus artículos guardados</h3>
-<p>Aquí aparecerán los artículos que guardes.</p>
+<div
+id="savedContent"
+class="content">
 </div>
 
 </div>
@@ -785,10 +842,17 @@ normalmente requieren inteligencia humana.
 
 <div class="profile">
 
-<div class="avatar">👤</div>
+<div class="avatar">
+👤
+</div>
 
-<h2>Mi perfil</h2>
-<p>Bienvenido a WikiNova</p>
+<h2>
+Mi perfil
+</h2>
+
+<p>
+Bienvenido a WikiNova
+</p>
 
 <div class="profile-card">
 
@@ -796,13 +860,20 @@ normalmente requieren inteligencia humana.
 👤 Iniciar sesión
 </button>
 
-<button class="profile-option"
-        onclick="toggleDark()">
+<button
+class="profile-option"
+onclick="toggleDark()">
+
 🌙 Cambiar tema
+
 </button>
 
-<button class="profile-option">
+<button
+class="profile-option"
+onclick="aboutWikiNova()">
+
 ℹ️ Acerca de WikiNova
+
 </button>
 
 </div>
@@ -818,12 +889,16 @@ normalmente requieren inteligencia humana.
 
 <div class="reader">
 
-<button class="back"
-        onclick="showPage('homePage')">
+<button
+class="back"
+onclick="goBackFromArticle()">
+
 ← Volver
+
 </button>
 
-<div id="readerContent"></div>
+<div id="readerContent">
+</div>
 
 </div>
 
@@ -838,28 +913,59 @@ normalmente requieren inteligencia humana.
 
 <div class="nav-inner">
 
-<button class="nav-item active"
-        onclick="navigate(this,'homePage')">
-<span class="nav-icon">⌂</span>
+<button
+id="navHome"
+class="nav-item active"
+onclick="navigate(this,'homePage')">
+
+<span class="nav-icon">
+⌂
+</span>
+
 Inicio
+
 </button>
 
-<button class="nav-item"
-        onclick="navigate(this,'explorePage')">
-<span class="nav-icon">🧭</span>
+
+<button
+id="navExplore"
+class="nav-item"
+onclick="navigate(this,'explorePage')">
+
+<span class="nav-icon">
+🧭
+</span>
+
 Explorar
+
 </button>
 
-<button class="nav-item"
-        onclick="navigate(this,'savedPage')">
-<span class="nav-icon">🔖</span>
+
+<button
+id="navSaved"
+class="nav-item"
+onclick="navigate(this,'savedPage')">
+
+<span class="nav-icon">
+🔖
+</span>
+
 Guardados
+
 </button>
 
-<button class="nav-item"
-        onclick="navigate(this,'profilePage')">
-<span class="nav-icon">👤</span>
+
+<button
+id="navProfile"
+class="nav-item"
+onclick="navigate(this,'profilePage')">
+
+<span class="nav-icon">
+👤
+</span>
+
 Perfil
+
 </button>
 
 </div>
@@ -869,259 +975,823 @@ Perfil
 
 <script>
 
+/* =========================
+   BASE DE DATOS
+========================= */
+
 const articlesData = {
 
-solar: {
+solar:{
 title:"Sistema Solar",
 category:"Ciencia",
 icon:"🪐",
 text:`
 <p>
-El Sistema Solar es el sistema planetario en el que se encuentra
-la Tierra. Está formado por el Sol y todos los objetos que orbitan
-a su alrededor.
+El Sistema Solar es el sistema planetario
+en el que se encuentra la Tierra.
+Está formado por el Sol y todos los objetos
+que orbitan a su alrededor.
 </p>
 
 <h2>Los planetas</h2>
 
 <p>
-Los ocho planetas principales son Mercurio, Venus, Tierra, Marte,
-Júpiter, Saturno, Urano y Neptuno.
+Los ocho planetas principales son Mercurio,
+Venus, Tierra, Marte, Júpiter, Saturno,
+Urano y Neptuno.
 </p>
 
 <h2>El Sol</h2>
 
 <p>
-El Sol es una estrella y constituye la principal fuente de energía
-para la vida en la Tierra.
+El Sol es una estrella y constituye la principal
+fuente de energía para la vida en la Tierra.
 </p>
 `
 },
 
-egipto: {
+egipto:{
 title:"Antiguo Egipto",
 category:"Historia",
 icon:"🏺",
 text:`
 <p>
-El Antiguo Egipto fue una civilización desarrollada alrededor
-del río Nilo durante miles de años.
+El Antiguo Egipto fue una civilización
+desarrollada alrededor del río Nilo durante
+miles de años.
 </p>
 
 <h2>Las pirámides</h2>
 
 <p>
-Las pirámides son algunas de las construcciones más conocidas
-de la civilización egipcia.
+Las pirámides son algunas de las construcciones
+más conocidas de la civilización egipcia.
 </p>
 
 <h2>El río Nilo</h2>
 
 <p>
-El Nilo tuvo un papel fundamental en la agricultura,
-el transporte y la vida cotidiana de Egipto.
+El Nilo tuvo un papel fundamental en la
+agricultura, el transporte y la vida cotidiana
+de Egipto.
 </p>
 `
 },
 
-ia: {
+ia:{
 title:"Inteligencia Artificial",
 category:"Tecnología",
 icon:"🤖",
 text:`
 <p>
-La inteligencia artificial es un campo de la informática dedicado
-a desarrollar sistemas capaces de realizar tareas que normalmente
+La inteligencia artificial es un campo de la
+informática dedicado a desarrollar sistemas
+capaces de realizar tareas que normalmente
 requieren capacidades humanas.
 </p>
 
 <h2>Aplicaciones</h2>
 
 <p>
-La IA puede utilizarse para reconocimiento de imágenes,
-procesamiento del lenguaje, recomendaciones y muchas otras tareas.
+La IA puede utilizarse para reconocimiento
+de imágenes, procesamiento del lenguaje,
+recomendaciones y muchas otras tareas.
 </p>
 
 <h2>El futuro</h2>
 
 <p>
-La inteligencia artificial continúa evolucionando y tiene
-aplicaciones en numerosos campos.
+La inteligencia artificial continúa evolucionando
+y tiene aplicaciones en numerosos campos.
 </p>
 `
-}
+},
 
+tierra:{
+title:"La Tierra",
+category:"Geografía",
+icon:"🌍",
+text:`
+<p>
+La Tierra es el planeta donde vivimos y el
+tercero del Sistema Solar contando desde el Sol.
+</p>
+
+<h2>Superficie</h2>
+
+<p>
+La Tierra posee continentes, océanos,
+montañas, desiertos y numerosos ecosistemas.
+</p>
+
+<h2>Atmósfera</h2>
+
+<p>
+Su atmósfera contiene principalmente nitrógeno
+y oxígeno y ayuda a mantener condiciones
+adecuadas para la vida.
+</p>
+`
+},
+
+marte:{
+title:"Marte",
+category:"Ciencia",
+icon:"🔴",
+text:`
+<p>
+Marte es el cuarto planeta del Sistema Solar
+y es conocido como el planeta rojo debido al
+aspecto de su superficie.
+</p>
+
+<h2>Características</h2>
+
+<p>
+Marte posee una atmósfera muy delgada,
+grandes volcanes y extensos sistemas
+de cañones.
+</p>
+
+<h2>Exploración</h2>
+
+<p>
+Numerosas misiones espaciales han estudiado
+Marte mediante sondas, orbitadores y
+vehículos robóticos.
+</p>
+`
+},
+
+internet:{
+title:"Internet",
+category:"Tecnología",
+icon:"🌐",
+text:`
+<p>
+Internet es una enorme red mundial que conecta
+computadoras y otros dispositivos para
+intercambiar información.
+</p>
+
+<h2>La Web</h2>
+
+<p>
+La World Wide Web es uno de los servicios que
+funcionan sobre Internet y permite acceder a
+páginas y aplicaciones mediante navegadores.
+</p>
+
+<h2>Usos</h2>
+
+<p>
+Internet permite comunicarse, aprender,
+compartir información y utilizar numerosos
+servicios digitales.
+</p>
+`
+},
+
+dinosaurios:{
+title:"Dinosaurios",
+category:"Ciencia",
+icon:"🦖",
+text:`
+<p>
+Los dinosaurios fueron un grupo diverso de
+reptiles que dominaron muchos ecosistemas
+terrestres durante millones de años.
+</p>
+
+<h2>Extinción</h2>
+
+<p>
+La mayoría de los dinosaurios no avianos
+desapareció hace aproximadamente 66 millones
+de años.
+</p>
+
+<h2>Fósiles</h2>
+
+<p>
+Los fósiles permiten a los científicos estudiar
+cómo eran estos animales y cómo vivían.
+</p>
+`
+},
+
+roma:{
+title:"Imperio Romano",
+category:"Historia",
+icon:"🏛️",
+text:`
+<p>
+El Imperio Romano fue una de las grandes
+potencias de la Antigüedad y llegó a controlar
+extensos territorios alrededor del Mediterráneo.
+</p>
+
+<h2>Sociedad</h2>
+
+<p>
+La sociedad romana estaba formada por
+diferentes grupos con distintos derechos
+y responsabilidades.
+</p>
+
+<h2>Legado</h2>
+
+<p>
+Roma dejó una importante influencia en la
+arquitectura, el derecho, las lenguas
+y la cultura.
+</p>
+`
+},
+
+programacion:{
+title:"Programación",
+category:"Tecnología",
+icon:"💻",
+text:`
+<p>
+La programación consiste en crear instrucciones
+que permiten a una computadora realizar
+determinadas tareas.
+</p>
+
+<h2>Lenguajes</h2>
+
+<p>
+Existen numerosos lenguajes de programación,
+como JavaScript, Python, Java y C++.
+</p>
+
+<h2>Aplicaciones</h2>
+
+<p>
+La programación se utiliza para crear páginas
+web, videojuegos, aplicaciones, sistemas
+y muchas otras herramientas.
+</p>
+`
+},
+
+universo:{
+title:"Universo",
+category:"Ciencia",
+icon:"🌌",
+text:`
+<p>
+El universo contiene galaxias, estrellas,
+planetas, nebulosas y otros objetos y
+fenómenos astronómicos.
+</p>
+
+<h2>Galaxias</h2>
+
+<p>
+Las galaxias son enormes conjuntos de estrellas,
+gas, polvo y otros componentes unidos
+por la gravedad.
+</p>
+
+<h2>Exploración</h2>
+
+<p>
+La astronomía permite estudiar el universo
+mediante telescopios y otras herramientas
+científicas.
+</p>
+`
 };
+    // =========================
+        // FUNCIONES DE WIKINOVA
+        // =========================
 
+        let savedArticles = JSON.parse(
+            localStorage.getItem("wikinova-saved") || "[]"
+        );
 
-function showPage(id){
+        let currentArticle = null;
 
-document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
+        function getCategoryEmoji(category) {
+            const emojis = {
+                "Ciencia": "🔬",
+                "Historia": "🏺",
+                "Tecnología": "💻",
+                "Geografía": "🌍"
+            };
 
-document.getElementById(id)
-.classList.add("active");
+            return emojis[category] || "📚";
+        }
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+        function getPreview(content) {
+            const div = document.createElement("div");
+            div.innerHTML = content;
 
-}
+            const text = div.textContent || div.innerText || "";
 
+            return text.substring(0, 140) + "...";
+        }
 
-function navigate(button,page){
+        // =========================
+        // CREAR TARJETA
+        // =========================
 
-document.querySelectorAll(".nav-item")
-.forEach(x=>x.classList.remove("active"));
+        function createArticleCard(article) {
+            const isSaved = savedArticles.includes(article.id);
 
-button.classList.add("active");
+            return `
+                <div class="article"
+                     data-title="${article.title.toLowerCase()}"
+                     onclick="openArticle('${article.id}')">
 
-showPage(page);
+                    <div class="article-icon">
+                        ${article.icon || getCategoryEmoji(article.category)}
+                    </div>
 
-}
+                    <div class="article-info">
+                        <h3>${article.title}</h3>
 
+                        <span class="article-category">
+                            ${article.category}
+                        </span>
 
-function toggleDark(){
+                        <p>
+                            ${getPreview(article.content)}
+                        </p>
+                    </div>
 
-document.body.classList.toggle("dark");
+                    <button
+                        class="save-btn ${isSaved ? "saved" : ""}"
+                        onclick="event.stopPropagation(); toggleSave('${article.id}')"
+                        title="Guardar artículo">
+                        ${isSaved ? "★" : "☆"}
+                    </button>
 
-localStorage.setItem(
-"wikinova-dark",
-document.body.classList.contains("dark")
-);
+                </div>
+            `;
+        }
 
-}
+        // =========================
+        // INICIO
+        // =========================
 
+        function renderHomeArticles() {
+            const container =
+                document.getElementById("homeArticles");
 
-if(localStorage.getItem("wikinova-dark")==="true"){
-document.body.classList.add("dark");
-}
+            if (!container) return;
 
+            const articles =
+                Object.values(articlesData).slice(0, 6);
 
-function searchArticles(){
+            container.innerHTML =
+                articles.map(createArticleCard).join("");
+        }
 
-function searchArticles(){
+        // =========================
+        // BUSCADOR
+        // =========================
 
-    const input = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+        function searchArticles() {
 
-    const container = document.getElementById("articles");
-    const noResults = document.getElementById("noResults");
+            const input =
+                document.getElementById("searchInput");
 
-    // Si no hay búsqueda, mostrar los artículos originales
-    if(input === ""){
-        document.querySelectorAll(".article[data-title]")
-            .forEach(article => {
-                article.style.display = "";
-            });
+            const query =
+                input.value.trim().toLowerCase();
 
-        noResults.style.display = "none";
-        return;
-    }
+            const container =
+                document.getElementById("searchResults");
 
-    let found = 0;
+            const homeArticles =
+                document.getElementById("homeArticles");
 
-    document.querySelectorAll(".article[data-title]")
-        .forEach(article => {
+            if (!container) return;
 
-            const title = article.dataset.title.toLowerCase();
+            if (query === "") {
+                container.innerHTML = "";
 
-            const data = Object.values(articlesData).find(
-                item => item.title.toLowerCase() === title
+                if (homeArticles) {
+                    homeArticles.style.display = "grid";
+                }
+
+                return;
+            }
+
+            if (homeArticles) {
+                homeArticles.style.display = "none";
+            }
+
+            const results =
+                Object.values(articlesData).filter(article => {
+
+                    const div =
+                        document.createElement("div");
+
+                    div.innerHTML = article.content;
+
+                    const text =
+                        div.textContent.toLowerCase();
+
+                    return (
+                        article.title.toLowerCase().includes(query) ||
+                        article.category.toLowerCase().includes(query) ||
+                        text.includes(query)
+                    );
+                });
+
+            if (results.length === 0) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🔎</div>
+
+                        <h3>No encontramos nada</h3>
+
+                        <p>
+                            Prueba con otra palabra,
+                            categoría o tema.
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="results-title">
+                    Resultados para "${query}"
+                </div>
+
+                ${results.map(createArticleCard).join("")}
+            `;
+        }
+
+        // =========================
+        // BUSCAR CATEGORÍA
+        // =========================
+
+        function searchCategory(category) {
+
+            showPage("explorePage");
+
+            const input =
+                document.getElementById("searchInput");
+
+            if (input) {
+                input.value = "";
+            }
+
+            const results =
+                Object.values(articlesData)
+                .filter(article =>
+                    article.category === category
+                );
+
+            const container =
+                document.getElementById("exploreArticles");
+
+            if (!container) return;
+
+            container.innerHTML = `
+                <div class="results-title">
+                    ${getCategoryEmoji(category)}
+                    ${category}
+                </div>
+
+                ${results.map(createArticleCard).join("")}
+            `;
+        }
+
+        // =========================
+        // EXPLORAR
+        // =========================
+
+        function renderExplore() {
+
+            const container =
+                document.getElementById("exploreArticles");
+
+            if (!container) return;
+
+            const articles =
+                Object.values(articlesData);
+
+            container.innerHTML =
+                articles.map(createArticleCard).join("");
+        }
+
+        // =========================
+        // ABRIR ARTÍCULO
+        // =========================
+
+        function openArticle(id) {
+
+            const article =
+                articlesData[id];
+
+            if (!article) return;
+
+            currentArticle = id;
+
+            document.getElementById("readerTitle").textContent =
+                article.title;
+
+            document.getElementById("readerCategory").textContent =
+                `${article.icon || getCategoryEmoji(article.category)}
+                 ${article.category}`;
+
+            document.getElementById("readerContent").innerHTML =
+                article.content;
+
+            updateReaderSaveButton();
+
+            showPage("readerPage");
+        }
+
+        // =========================
+        // GUARDAR ARTÍCULO
+        // =========================
+
+        function toggleSave(id) {
+
+            if (savedArticles.includes(id)) {
+
+                savedArticles =
+                    savedArticles.filter(
+                        articleId => articleId !== id
+                    );
+
+            } else {
+
+                savedArticles.push(id);
+            }
+
+            localStorage.setItem(
+                "wikinova-saved",
+                JSON.stringify(savedArticles)
             );
 
-            let searchableText = title;
+            renderHomeArticles();
+            renderExplore();
+            renderSaved();
 
-            if(data){
-                searchableText += " ";
-                searchableText += data.category.toLowerCase();
-                searchableText += " ";
-                searchableText += data.text
-                    .replace(/<[^>]*>/g, "")
-                    .toLowerCase();
+            updateReaderSaveButton();
+        }
+
+        // =========================
+        // BOTÓN GUARDAR DEL LECTOR
+        // =========================
+
+        function updateReaderSaveButton() {
+
+            const button =
+                document.getElementById("readerSaveBtn");
+
+            if (!button || !currentArticle) return;
+
+            const saved =
+                savedArticles.includes(currentArticle);
+
+            button.innerHTML =
+                saved ? "★ Guardado" : "☆ Guardar";
+
+            button.classList.toggle(
+                "saved",
+                saved
+            );
+        }
+
+        // =========================
+        // GUARDADOS
+        // =========================
+
+        function renderSaved() {
+
+            const container =
+                document.getElementById("savedArticles");
+
+            if (!container) return;
+
+            if (savedArticles.length === 0) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ☆
+                        </div>
+
+                        <h3>No tienes artículos guardados</h3>
+
+                        <p>
+                            Guarda artículos para
+                            encontrarlos rápidamente aquí.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
             }
 
-            if(searchableText.includes(input)){
-                article.style.display = "";
-                found++;
-            }else{
-                article.style.display = "none";
+            const articles =
+                savedArticles
+                .map(id => articlesData[id])
+                .filter(Boolean);
+
+            container.innerHTML =
+                articles.map(createArticleCard).join("");
+        }
+
+        // =========================
+        // CAMBIAR DE PÁGINA
+        // =========================
+
+        function showPage(pageId) {
+
+            document
+                .querySelectorAll(".page")
+                .forEach(page => {
+                    page.classList.remove("active");
+                });
+
+            const page =
+                document.getElementById(pageId);
+
+            if (page) {
+                page.classList.add("active");
             }
 
-        });
+            document
+                .querySelectorAll(".nav-btn")
+                .forEach(btn => {
+                    btn.classList.remove("active");
+                });
 
-    noResults.style.display =
-        found === 0 ? "block" : "none";
-}
+            if (pageId === "homePage") {
 
-const articles=
-document.querySelectorAll(".article[data-title]");
+                const btn =
+                    document.querySelector(
+                        '.nav-btn[data-page="homePage"]'
+                    );
 
-let found=0;
+                if (btn) btn.classList.add("active");
+            }
 
-articles.forEach(article=>{
+            if (pageId === "explorePage") {
 
-const title=
-article.dataset.title.toLowerCase();
+                const btn =
+                    document.querySelector(
+                        '.nav-btn[data-page="explorePage"]'
+                    );
 
-if(title.includes(input)){
-article.style.display="";
-found++;
-}else{
-article.style.display="none";
-}
+                if (btn) btn.classList.add("active");
+            }
 
-});
+            if (pageId === "savedPage") {
 
-document.getElementById("noResults")
-.style.display=
-found===0 ? "block":"none";
+                const btn =
+                    document.querySelector(
+                        '.nav-btn[data-page="savedPage"]'
+                    );
 
-}
+                if (btn) btn.classList.add("active");
+            }
 
+            if (pageId === "profilePage") {
 
-function openArticle(id){
+                const btn =
+                    document.querySelector(
+                        '.nav-btn[data-page="profilePage"]'
+                    );
 
-const article=articlesData[id];
+                if (btn) btn.classList.add("active");
+            }
+        }
 
-document.getElementById("readerContent").innerHTML=`
+        // =========================
+        // NAVEGACIÓN
+        // =========================
 
-<div style="font-size:45px;margin-bottom:10px">
-${article.icon}
-</div>
+        function navigate(button, pageId) {
 
-<h1>${article.title}</h1>
+            showPage(pageId);
 
-<div class="meta">
-${article.category} · WikiNova
-</div>
+            if (pageId === "savedPage") {
+                renderSaved();
+            }
 
-${article.text}
-`;
+            if (pageId === "explorePage") {
+                renderExplore();
+            }
+        }
 
-showPage("readerPage");
+        // =========================
+        // EXPLORAR DESDE INICIO
+        // =========================
 
-}
+        function goExplore() {
 
+            showPage("explorePage");
 
-function saveArticle(button){
+            renderExplore();
+        }
 
-button.classList.toggle("active");
+        // =========================
+        // VOLVER DEL ARTÍCULO
+        // =========================
 
-if(button.classList.contains("active")){
-button.textContent="★ Guardado";
-}else{
-button.textContent="☆ Guardar";
-}
+        function goBackFromArticle() {
 
-}
+            showPage("explorePage");
 
+            renderExplore();
+        }
 
-</script>
+        // =========================
+        // MODO OSCURO
+        // =========================
+
+        function toggleDark() {
+
+            document.body.classList.toggle("dark");
+
+            const dark =
+                document.body.classList.contains("dark");
+
+            localStorage.setItem(
+                "wikinova-dark",
+                dark ? "true" : "false"
+            );
+
+            const button =
+                document.getElementById("darkToggle");
+
+            if (button) {
+                button.textContent =
+                    dark ? "☀️" : "🌙";
+            }
+        }
+
+        // =========================
+        // RESTAURAR MODO OSCURO
+        // =========================
+
+        if (
+            localStorage.getItem("wikinova-dark") === "true"
+        ) {
+
+            document.body.classList.add("dark");
+
+            const button =
+                document.getElementById("darkToggle");
+
+            if (button) {
+                button.textContent = "☀️";
+            }
+        }
+
+        // =========================
+        // INFORMACIÓN DE WIKINOVA
+        // =========================
+
+        function aboutWikiNova() {
+
+            alert(
+                "WikiNova Pro\n\n" +
+                "Explora el conocimiento de forma rápida, " +
+                "moderna y sencilla.\n\n" +
+                "Versión 1.0"
+            );
+        }
+
+        // =========================
+        // CORRECCIÓN DEL BUSCADOR
+        // =========================
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        if (searchInput) {
+            searchInput.addEventListener(
+                "input",
+                searchArticles
+            );
+        }
+
+        // =========================
+        // INICIAR WIKINOVA
+        // =========================
+
+        renderHomeArticles();
+        renderExplore();
+        renderSaved();
+
+    </script>
 
 </body>
-    </html>
+</html>
