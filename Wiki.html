@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WikiNova</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    color:#17202a;
+    transition:.3s;
+}
+
+body.dark{
+    background:#101418;
+    color:#f1f1f1;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    padding:14px 22px;
+
+    background:white;
+
+    box-shadow:0 2px 12px #0002;
+}
+
+.dark header{
+    background:#181d23;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#2478ff;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.search{
+    flex:1;
+    display:flex;
+    max-width:700px;
+    margin:auto;
+}
+
+.search input{
+    flex:1;
+
+    padding:13px 17px;
+
+    border:1px solid #ccc;
+    border-right:none;
+
+    border-radius:25px 0 0 25px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.dark .search input{
+    background:#252c34;
+    color:white;
+    border-color:#444;
+}
+
+.search button{
+    border:none;
+
+    background:#2478ff;
+    color:white;
+
+    padding:0 21px;
+
+    border-radius:0 25px 25px 0;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.user-area{
+    position:relative;
+}
+
+.user-btn{
+    border:none;
+
+    background:#eef3f8;
+
+    padding:10px 15px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+}
+
+.dark .user-btn{
+    background:#252c34;
+    color:white;
+}
+
+.user-menu{
+    display:none;
+
+    position:absolute;
+
+    right:0;
+    top:52px;
+
+    width:230px;
+
+    padding:15px;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 25px #0003;
+}
+
+.dark .user-menu{
+    background:#1c2229;
+}
+
+.user-menu button{
+    width:100%;
+
+    border:none;
+
+    padding:10px;
+
+    margin-top:7px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.hero{
+    text-align:center;
+
+    padding:75px 20px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2478ff,
+            #6a4cff
+        );
+}
+
+.hero h1{
+    font-size:46px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.container{
+    width:100%;
+    max-width:1150px;
+
+    margin:auto;
+
+    padding:35px 20px;
+}
+
+.categories{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(140px,1fr)
+        );
+
+    gap:15px;
+
+    margin:25px 0 45px;
+}
+
+.category{
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    box-shadow:0 3px 12px #0001;
+
+    transition:.2s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+}
+
+.dark .category,
+.dark .article-card,
+.dark .result-card,
+.dark .profile-card,
+.dark .article-page{
+    background:#1a2027;
+}
+
+.article-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px,1fr)
+        );
+
+    gap:20px;
+}
+
+.article-card{
+    background:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    box-shadow:0 3px 12px #0001;
+
+    cursor:pointer;
+}
+
+.article-card img{
+    width:100%;
+    height:160px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+}
+
+.article-card h3{
+    margin-bottom:8px;
+}
+
+.article-card p{
+    opacity:.75;
+}
+
+.article-page{
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 3px 15px #0001;
+}
+
+.article-page h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.article-content{
+    margin-top:25px;
+
+    font-size:17px;
+
+    line-height:1.75;
+}
+
+.article-content h2{
+    margin-top:35px;
+    margin-bottom:12px;
+
+    border-bottom:1px solid #ddd;
+
+    padding-bottom:8px;
+}
+
+.article-content h3{
+    margin-top:25px;
+}
+
+.article-content p{
+    margin:12px 0;
+}
+
+.article-content img{
+    max-width:100%;
+    height:auto;
+
+    border-radius:12px;
+
+    margin:12px 0;
+}
+
+.article-content table{
+    max-width:100%;
+    overflow:auto;
+    display:block;
+}
+
+.article-content a{
+    color:#2478ff;
+}
+
+.article-actions{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:20px 0;
+}
+
+.action-button{
+    border:none;
+
+    background:#2478ff;
+    color:white;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.back-button{
+    border:none;
+
+    background:#e9eef5;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    margin-bottom:20px;
+}
+
+.dark .back-button{
+    background:#29313a;
+    color:white;
+}
+
+.source-box{
+    margin-top:35px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:#eef3f8;
+}
+
+.dark .source-box{
+    background:#252c34;
+}
+
+.source-box a{
+    color:#2478ff;
+}
+
+.loading{
+    text-align:center;
+
+    padding:70px 20px;
+
+    font-size:20px;
+}
+
+.loading-icon{
+    font-size:45px;
+
+    margin-bottom:15px;
+
+    animation:girar 1s linear infinite;
+}
+
+@keyframes girar{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.error-box{
+    text-align:center;
+
+    padding:40px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:0 3px 12px #0001;
+}
+
+.dark .error-box{
+    background:#1a2027;
+}
+
+.profile-card{
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    max-width:600px;
+
+    margin:auto;
+
+    box-shadow:0 3px 12px #0001;
+}
+
+.avatar{
+    font-size:70px;
+
+    margin-bottom:10px;
+}
+
+.modal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#0008;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:2000;
+
+    padding:20px;
+}
+
+.modal-box{
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    width:100%;
+
+    max-width:400px;
+}
+
+.dark .modal-box{
+    background:#1a2027;
+}
+
+.modal-box input{
+    width:100%;
+
+    padding:12px;
+
+    margin:7px 0;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+}
+
+.modal-box button{
+    width:100%;
+
+    padding:12px;
+
+    margin-top:8px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2478ff;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.close{
+    float:right;
+
+    font-size:24px;
+
+    cursor:pointer;
+}
+
+footer{
+    margin-top:50px;
+
+    padding:30px;
+
+    text-align:center;
+
+    background:#17202a;
+
+    color:white;
+}
+
+@media(max-width:700px){
+
+    header{
+        flex-wrap:wrap;
+    }
+
+    .logo{
+        width:100%;
+        text-align:center;
+    }
+
+    .search{
+        width:100%;
+        order:3;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .article-page{
+        padding:20px;
+    }
+
+    .article-page h1{
+        font-size:32px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div
+        class="logo"
+        onclick="irInicio()"
+    >
+        WikiNova
+    </div>
+
+    <div class="search">
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Buscar cualquier cosa..."
+            onkeydown="
+                if(event.key==='Enter'){
+                    buscar();
+                }
+            "
+        >
+
+        <button onclick="buscar()">
+            🔎
+        </button>
+
+    </div>
+
+    <div class="user-area">
+
+        <button
+            class="user-btn"
+            onclick="toggleUserMenu()"
+        >
+
+            👤
+
+            <span id="userNameButton">
+                Iniciar sesión
+            </span>
+
+        </button>
+
+        <div
+            class="user-menu"
+            id="userMenu"
+        >
+
+            <div id="menuUserName">
+                No has iniciado sesión
+            </div>
+
+            <button
+                id="loginMenuButton"
+                onclick="abrirUsuario()"
+            >
+                🔐 Iniciar sesión
+            </button>
+
+            <button
+                id="profileMenuButton"
+                onclick="abrirPerfil()"
+                style="display:none;"
+            >
+                👤 Mi perfil
+            </button>
+
+            <button
+                id="logoutButton"
+                onclick="cerrarSesion()"
+                style="display:none;"
+            >
+                🚪 Cerrar sesión
+            </button>
+
+            <button onclick="cambiarModo()">
+                🌙 Cambiar modo
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+<main id="app">
+
+<section class="hero">
+
+    <h1>
+        WikiNova
+    </h1>
+
+    <p>
+        El conocimiento del mundo, en un solo lugar 🌎
+    </p>
+
+</section>
+
+<div class="container">
+
+    <h2>
+        Explora WikiNova 🔥
+    </h2>
+
+    <div class="categories">
+
+        <div
+            class="category"
+            onclick="buscarCategoria('Videojuegos')"
+        >
+            🎮
+            <br><br>
+            Videojuegos
+        </div>
+
+        <div
+            class="category"
+            onclick="buscarCategoria('Tecnología')"
+        >
+            💻
+            <br><br>
+            Tecnología
+        </div>
+
+        <div
+            class="category"
+            onclick="buscarCategoria('Historia')"
+        >
+            📜
+            <br><br>
+            Historia
+        </div>
+
+        <div
+            class="category"
+            onclick="buscarCategoria('Ciencia')"
+        >
+            🔬
+            <br><br>
+            Ciencia
+        </div>
+
+        <div
+            class="category"
+            onclick="buscarCategoria('Animales')"
+        >
+            🐺
+            <br><br>
+            Animales
+        </div>
+
+        <div
+            class="category"
+            onclick="buscarCategoria('Entretenimiento')"
+        >
+            🎬
+            <br><br>
+            Entretenimiento
+        </div>
+
+    </div>
+
+    <h2>
+        Artículos destacados ⭐
+    </h2>
+
+    <div class="article-grid">
+
+        <div
+            class="article-card"
+            onclick="cargarArticulo('Minecraft')"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=800&q=80"
+            >
+
+            <h3>
+                Minecraft
+            </h3>
+
+            <p>
+                Videojuego de construcción y exploración.
+            </p>
+
+        </div>
+
+        <div
+            class="article-card"
+            onclick="
+                cargarArticulo(
+                    'Inteligencia artificial'
+                )
+            "
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+            >
+
+            <h3>
+                Inteligencia Artificial
+            </h3>
+
+            <p>
+                Tecnología que permite a los sistemas realizar tareas inteligentes.
+            </p>
+
+        </div>
+
+        <div
+            class="article-card"
+            onclick="cargarArticulo('Sistema Solar')"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=80"
+            >
+
+            <h3>
+                Sistema Solar
+            </h3>
+
+            <p>
+                Nuestro sistema planetario.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+
+    © 2026 WikiNova 🌎
+
+</footer>
+
+<div
+    class="modal"
+    id="userModal"
+>
+
+    <div class="modal-box">
+
+        <span
+            class="close"
+            onclick="cerrarUsuario()"
+        >
+            ×
+        </span>
+
+        <h2>
+            Cuenta WikiNova
+        </h2>
+
+        <input
+            id="usernameInput"
+            placeholder="Nombre de usuario"
+        >
+
+        <input
+            id="passwordInput"
+            type="password"
+            placeholder="Contraseña"
+        >
+
+        <button onclick="registrarUsuario()">
+            Crear cuenta
+        </button>
+
+        <button onclick="iniciarSesion()">
+            Iniciar sesión
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const STORAGE_CONTADOR =
+    "wikinova_contador";
+
+const STORAGE_SESSION =
+    "wikinova_session";
+
+const WIKI_API =
+    "https://es.wikipedia.org/w/api.php";
+
+window.onload = function(){
+
+    actualizarMenu();
+
+    if(
+        localStorage.getItem(
+            "wikinova_modo"
+        ) === "dark"
+    ){
+
+        document.body.classList.add(
+            "dark"
+        );
+
+    }
+
+};
+
+function obtenerUsuario(){
+
+    const username =
+        localStorage.getItem(
+            STORAGE_SESSION
+        );
+
+    if(!username){
+        return null;
+    }
+
+    const datos =
+        localStorage.getItem(
+            "wikinova_user_" +
+            username
+        );
+
+    if(!datos){
+        return null;
+    }
+
+    return JSON.parse(datos);
+
+}
+
+function abrirUsuario(){
+
+    document.getElementById(
+        "userModal"
+    ).style.display = "flex";
+
+}
+
+function cerrarUsuario(){
+
+    document.getElementById(
+        "userModal"
+    ).style.display = "none";
+
+}
+
+function registrarUsuario(){
+
+    const username =
+        document.getElementById(
+            "usernameInput"
+        ).value.trim();
+
+    const password =
+        document.getElementById(
+            "passwordInput"
+        ).value;
+
+    if(username.length < 3){
+
+        alert(
+            "El usuario debe tener al menos 3 caracteres."
+        );
+
+        return;
+
+    }
+
+    if(password.length < 4){
+
+        alert(
+            "La contraseña debe tener al menos 4 caracteres."
+        );
+
+        return;
+
+    }
+
+    const key =
+        "wikinova_user_" +
+        username;
+
+    if(
+        localStorage.getItem(key)
+    ){
+
+        alert(
+            "Ese usuario ya existe."
+        );
+
+        return;
+
+    }
+
+    let contador =
+        Number(
+            localStorage.getItem(
+                STORAGE_CONTADOR
+            )
+        ) || 0;
+
+    contador++;
+
+    const usuario = {
+
+        username:username,
+
+        nombrePublico:
+            "Usuario " +
+            contador,
+
+        numero:contador,
+
+        password:password,
+
+        avatar:"😎",
+
+        articles:0
+
+    };
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(usuario)
+    );
+
+    localStorage.setItem(
+        STORAGE_CONTADOR,
+        contador
+    );
+
+    localStorage.setItem(
+        STORAGE_SESSION,
+        username
+    );
+
+    alert(
+        "¡Cuenta creada! 🎉\n\n" +
+        "Tu nombre público es " +
+        usuario.nombrePublico
+    );
+
+    limpiarInputs();
+
+    cerrarUsuario();
+
+    actualizarMenu();
+
+}
+
+function iniciarSesion(){
+
+    const username =
+        document.getElementById(
+            "usernameInput"
+        ).value.trim();
+
+    const password =
+        document.getElementById(
+            "passwordInput"
+        ).value;
+
+    const datos =
+        localStorage.getItem(
+            "wikinova_user_" +
+            username
+        );
+
+    if(!datos){
+
+        alert(
+            "Ese usuario no existe."
+        );
+
+        return;
+
+    }
+
+    const usuario =
+        JSON.parse(datos);
+
+    if(
+        usuario.password !== password
+    ){
+
+        alert(
+            "Contraseña incorrecta."
+        );
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        STORAGE_SESSION,
+        username
+    );
+
+    limpiarInputs();
+
+    cerrarUsuario();
+
+    actualizarMenu();
+
+}
+
+function cerrarSesion(){
+
+    localStorage.removeItem(
+        STORAGE_SESSION
+    );
+
+    actualizarMenu();
+
+}
+
+function limpiarInputs(){
+
+    document.getElementById(
+        "usernameInput"
+    ).value = "";
+
+    document.getElementById(
+        "passwordInput"
+    ).value = "";
+
+}
+
+function toggleUserMenu(){
+
+    const menu =
+        document.getElementById(
+            "userMenu"
+        );
+
+    menu.style.display =
+        menu.style.display === "block"
+        ? "none"
+        : "block";
+
+}
+
+function actualizarMenu(){
+
+    const usuario =
+        obtenerUsuario();
+
+    const nombre =
+        document.getElementById(
+            "userNameButton"
+        );
+
+    const menuNombre =
+        document.getElementById(
+            "menuUserName"
+        );
+
+    const login =
+        document.getElementById(
+            "loginMenuButton"
+        );
+
+    const profile =
+        document.getElementById(
+            "profileMenuButton"
+        );
+
+    const logout =
+        document.getElementById(
+            "logoutButton"
+        );
+
+    if(usuario){
+
+        nombre.textContent =
+            usuario.nombrePublico;
+
+        menuNombre.textContent =
+            usuario.nombrePublico;
+
+        login.style.display =
+            "none";
+
+        profile.style.display =
+            "block";
+
+        logout.style.display =
+            "block";
+
+    }else{
+
+        nombre.textContent =
+            "Iniciar sesión";
+
+        menuNombre.textContent =
+            "No has iniciado sesión";
+
+        login.style.display =
+            "block";
+
+        profile.style.display =
+            "none";
+
+        logout.style.display =
+            "none";
+
+    }
+
+}
+
+function abrirPerfil(){
+
+    const usuario =
+        obtenerUsuario();
+
+    if(!usuario){
+
+        abrirUsuario();
+
+        return;
+
+    }
+
+    document.getElementById(
+        "app"
+    ).innerHTML = `
+
+        <div class="container">
+
+            <button
+                class="back-button"
+                onclick="irInicio()"
+            >
+                ← Volver
+            </button>
+
+            <div class="profile-card">
+
+                <div class="avatar">
+                    ${escapeHTML(
+                        usuario.avatar || "😎"
+                    )}
+                </div>
+
+                <h1>
+                    ${escapeHTML(
+                        usuario.nombrePublico
+                    )}
+                </h1>
+
+                <p>
+                    Usuario de WikiNova
+                </p>
+
+                <br>
+
+                <p>
+                    📚 Artículos creados:
+                    ${usuario.articles || 0}
+                </p>
+
+                <br>
+
+                <button
+                    class="action-button"
+                    onclick="cambiarAvatar()"
+                >
+                    ✏️ Cambiar avatar
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function cambiarAvatar(){
+
+    const usuario =
+        obtenerUsuario();
+
+    if(!usuario){
+        return;
+    }
+
+    const nuevo =
+        prompt(
+            "Escribe un emoji para tu avatar:",
+            usuario.avatar || "😎"
+        );
+
+    if(!nuevo){
+        return;
+    }
+
+    usuario.avatar =
+        nuevo;
+
+    localStorage.setItem(
+        "wikinova_user_" +
+        usuario.username,
+
+        JSON.stringify(usuario)
+    );
+
+    abrirPerfil();
+
+}
+
+function cambiarModo(){
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+    localStorage.setItem(
+
+        "wikinova_modo",
+
+        document.body.classList.contains(
+            "dark"
+        )
+        ? "dark"
+        : "light"
+
+    );
+
+}
+
+function irInicio(){
+
+    location.reload();
+
+}
+  function buscar(){
+
+    const texto =
+        document.getElementById(
+            "searchInput"
+        ).value.trim();
+
+    if(!texto){
+        alert("Escribe algo para buscar.");
+        return;
+    }
+
+    cargarArticulo(texto);
+
+}
+
+
+async function cargarArticulo(busqueda){
+
+    const app =
+        document.getElementById("app");
+
+    app.innerHTML = `
+        <div class="container">
+
+            <div class="loading">
+
+                <div class="loading-icon">
+                    🔄
+                </div>
+
+                <p>
+                    Buscando información sobre
+                    <b>${escapeHTML(busqueda)}</b>...
+                </p>
+
+            </div>
+
+        </div>
+    `;
+
+    try{
+
+        const searchURL =
+            WIKI_API +
+            "?action=query" +
+            "&list=search" +
+            "&srsearch=" +
+            encodeURIComponent(busqueda) +
+            "&srlimit=1" +
+            "&srnamespace=0" +
+            "&format=json" +
+            "&origin=*";
+
+        const searchResponse =
+            await fetch(searchURL);
+
+        const searchData =
+            await searchResponse.json();
+
+        if(
+            !searchData.query ||
+            !searchData.query.search ||
+            searchData.query.search.length === 0
+        ){
+
+            mostrarError(
+                "No encontré ningún artículo para esa búsqueda."
+            );
+
+            return;
+
+        }
+
+        const titulo =
+            searchData.query.search[0].title;
+
+
+        const parseURL =
+            WIKI_API +
+            "?action=parse" +
+            "&page=" +
+            encodeURIComponent(titulo) +
+            "&prop=text|displaytitle|revid" +
+            "&redirects=1" +
+            "&format=json" +
+            "&formatversion=2" +
+            "&origin=*";
+
+        const parseResponse =
+            await fetch(parseURL);
+
+        const data =
+            await parseResponse.json();
+
+        if(
+            !data.parse ||
+            !data.parse.text
+        ){
+
+            mostrarError(
+                "No se pudo cargar el artículo completo."
+            );
+
+            return;
+
+        }
+
+        mostrarArticuloCompleto(
+            titulo,
+            data.parse.text,
+            data.parse.displaytitle || titulo
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        mostrarError(
+            "Ocurrió un error al conectar con Wikipedia."
+        );
+
+    }
+
+}
+
+
+function mostrarArticuloCompleto(
+    titulo,
+    contenido,
+    displayTitle
+){
+
+    const app =
+        document.getElementById("app");
+
+    contenido =
+        limpiarHTMLWiki(contenido);
+
+    app.innerHTML = `
+
+        <div class="container">
+
+            <button
+                class="back-button"
+                onclick="irInicio()"
+            >
+                ← Volver a WikiNova
+            </button>
+
+            <article class="article-page">
+
+                <h1>
+                    ${displayTitle}
+                </h1>
+
+
+                <div class="article-actions">
+
+                    <button
+                        class="action-button"
+                        onclick="compartirArticulo('${escapeJS(titulo)}')"
+                    >
+                        📤 Compartir
+                    </button>
+
+
+                    <button
+                        class="action-button"
+                        onclick="
+                            window.scrollTo({
+                                top:0,
+                                behavior:'smooth'
+                            })
+                        "
+                    >
+                        ⬆️ Arriba
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="article-content"
+                    id="articleContent"
+                >
+                    ${contenido}
+                </div>
+
+
+                <div class="source-box">
+
+                    📚 <b>Fuente:</b> Wikipedia
+
+                    <br><br>
+
+                    Este artículo utiliza información
+                    disponible en Wikipedia.
+
+                    <br><br>
+
+                    <a
+                        href="https://es.wikipedia.org/wiki/${encodeURIComponent(titulo.replace(/ /g, "_"))}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        🔗 Ver artículo original en Wikipedia
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    `;
+
+
+    arreglarEnlaces();
+
+    arreglarImagenes();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+function limpiarHTMLWiki(html){
+
+    const temp =
+        document.createElement("div");
+
+    temp.innerHTML =
+        html;
+
+
+    const elementosEliminar =
+        temp.querySelectorAll(
+            ".mw-editsection, .navbox, .vertical-navbox, .metadata, .mw-empty-elt, script, style"
+        );
+
+
+    elementosEliminar.forEach(
+        elemento => elemento.remove()
+    );
+
+
+    return temp.innerHTML;
+
+}
+
+
+
+function arreglarEnlaces(){
+
+    const links =
+        document.querySelectorAll(
+            "#articleContent a"
+        );
+
+
+    links.forEach(link => {
+
+        const href =
+            link.getAttribute("href");
+
+
+        if(!href){
+            return;
+        }
+
+
+        if(
+            href.startsWith("/wiki/")
+        ){
+
+            const titulo =
+                decodeURIComponent(
+                    href
+                        .replace("/wiki/","")
+                        .split("#")[0]
+                )
+                .replace(/_/g," ");
+
+
+            link.onclick =
+                function(event){
+
+                    event.preventDefault();
+
+                    cargarArticulo(titulo);
+
+                };
+
+
+            link.removeAttribute("href");
+
+            link.style.cursor =
+                "pointer";
+
+        }else{
+
+            link.target =
+                "_blank";
+
+            link.rel =
+                "noopener";
+
+        }
+
+    });
+
+}
+
+
+
+function arreglarImagenes(){
+
+    const images =
+        document.querySelectorAll(
+            "#articleContent img"
+        );
+
+
+    images.forEach(img => {
+
+        let src =
+            img.getAttribute("src");
+
+
+        if(!src){
+            return;
+        }
+
+
+        if(
+            src.startsWith("//")
+        ){
+
+            src =
+                "https:" +
+                src;
+
+        }
+
+
+        if(
+            src.startsWith("/")
+        ){
+
+            src =
+                "https://es.wikipedia.org" +
+                src;
+
+        }
+
+
+        img.src =
+            src;
+
+        img.loading =
+            "lazy";
+
+    });
+
+}
+
+
+
+function compartirArticulo(titulo){
+
+    const url =
+        window.location.href;
+
+
+    if(
+        navigator.share
+    ){
+
+        navigator.share({
+
+            title:
+                titulo +
+                " - WikiNova",
+
+            text:
+                "Mira este artículo en WikiNova:",
+
+            url:url
+
+        }).catch(
+            () => {}
+        );
+
+    }else{
+
+        navigator.clipboard
+            .writeText(url)
+            .then(() => {
+
+                alert(
+                    "Enlace copiado 📋"
+                );
+
+            })
+            .catch(() => {
+
+                alert(
+                    "No se pudo copiar el enlace."
+                );
+
+            });
+
+    }
+
+}
+
+
+
+function buscarCategoria(
+    categoria
+){
+
+    document.getElementById(
+        "searchInput"
+    ).value =
+        categoria;
+
+
+    cargarArticulo(
+        categoria
+    );
+
+}
+
+
+
+function mostrarError(
+    mensaje
+){
+
+    document.getElementById(
+        "app"
+    ).innerHTML = `
+
+        <div class="container">
+
+            <button
+                class="back-button"
+                onclick="irInicio()"
+            >
+                ← Volver
+            </button>
+
+
+            <div class="error-box">
+
+                <div
+                    style="
+                        font-size:50px;
+                        margin-bottom:15px;
+                    "
+                >
+                    😕
+                </div>
+
+
+                <h2>
+                    No pudimos encontrar la información
+                </h2>
+
+
+                <br>
+
+
+                <p>
+                    ${escapeHTML(mensaje)}
+                </p>
+
+
+                <br>
+
+
+                <button
+                    class="action-button"
+                    onclick="
+                        document.getElementById(
+                            'searchInput'
+                        ).focus()
+                    "
+                >
+                    🔎 Intentar otra búsqueda
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
+
+
+
+function escapeJS(text){
+
+    return String(text)
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'")
+        .replace(/"/g,'\\"')
+        .replace(/\n/g,"\\n")
+        .replace(/\r/g,"\\r");
+
+}
+
+</script>
+
+</body>
+</html>
